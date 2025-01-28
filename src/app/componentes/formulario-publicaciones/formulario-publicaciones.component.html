@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Gestión de Publicaciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Formulario para agregar una nueva publicación -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Crear una nueva publicación</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-input placeholder="Título" [(ngModel)]="nuevaPublicacion.titulo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Descripción" [(ngModel)]="nuevaPublicacion.descripcion"></ion-input>
+      </ion-item>
+
+      <!-- Botón para Capturar Imagen -->
+      <ion-item>
+        <ion-button expand="full" (click)="capturarImagen()">Capturar Imagen</ion-button>
+      </ion-item>
+
+      <!-- Vista previa de la imagen capturada -->
+      <ion-item *ngIf="nuevaPublicacion.imagen">
+        <img [src]="nuevaPublicacion.imagen" alt="Imagen Capturada" style="width: 100%;" />
+      </ion-item>
+
+      <ion-button expand="full" (click)="agregarPublicacion()">Agregar Publicación</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de publicaciones existentes -->
+  <ion-list>
+    <ion-item *ngFor="let publicacion of publicaciones">
+      <ion-label>
+        <h2>{{ publicacion.titulo }}</h2>
+        <p>{{ publicacion.descripcion }}</p>
+        <!-- pipe 'date' para formatear la fecha -->
+      <p>{{ publicacion.fecha | date: 'dd/MM/yyyy HH:mm' }}</p>
+        <img *ngIf="publicacion.imagen" [src]="publicacion.imagen" alt="Imagen Capturada" style="width: 100px;" />
+      </ion-label>
+      <ion-button slot="end" color="danger" (click)="eliminarPublicacion(publicacion.id)">
+        Eliminar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

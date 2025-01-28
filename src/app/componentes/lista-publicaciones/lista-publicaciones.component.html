@@ -1,0 +1,7 @@
+<ion-list>
+  <app-publicacion-item
+    *ngFor="let publicacion of publicaciones"
+    [publicacion]="publicacion"
+    (eliminar)="eliminar.emit($event)">
+  </app-publicacion-item>
+</ion-list>

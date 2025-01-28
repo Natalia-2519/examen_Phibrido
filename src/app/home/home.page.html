@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Gestión de Publicaciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Formulario para agregar una nueva publicación -->
+  <app-formulario-publicaciones (agregar)="agregarPublicacion($event)"></app-formulario-publicaciones>-->
+
+  <!-- Lista de publicaciones -->
+  <app-lista-publicaciones
+    [publicaciones]="publicaciones"
+    (eliminar)="eliminarPublicacion($event)">
+  </app-lista-publicaciones>
+</ion-content>
+
